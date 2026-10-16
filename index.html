@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matemática 7º Ano • Curso Completo</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#64748b;--primary:#315efb;--primary2:#183bba;--ok:#159957;--bad:#d9363e;--line:#dfe5ef;--shadow:0 8px 28px rgba(24,40,72,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.55}
+header{background:linear-gradient(135deg,#172554,#315efb);color:#fff;padding:26px 20px;position:sticky;top:0;z-index:20;box-shadow:0 4px 18px #17255444}
+.header-inner{max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-size:1.4rem;font-weight:800}.sub{opacity:.88;font-size:.92rem}.progressbox{min-width:230px}.progressbar{height:9px;background:#ffffff38;border-radius:99px;overflow:hidden}.progressbar span{display:block;height:100%;background:#fff;width:0;transition:.3s}.progresslabel{font-size:.8rem;margin-top:6px;text-align:right}
+.layout{max-width:1250px;margin:auto;display:grid;grid-template-columns:285px 1fr;min-height:calc(100vh - 105px)}
+aside{background:#fff;border-right:1px solid var(--line);padding:18px;position:sticky;top:105px;height:calc(100vh - 105px);overflow:auto}
+aside h3{margin:4px 0 12px;font-size:1rem}.navbtn{width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:10px;cursor:pointer;color:var(--text);margin:2px 0;font-size:.9rem}.navbtn:hover,.navbtn.active{background:#eaf0ff;color:var(--primary2);font-weight:700}.tag{float:right;font-size:.7rem;color:var(--muted)}
+main{padding:28px 25px 60px}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.hero{padding:28px;margin-bottom:20px}.hero h1{margin:0 0 7px;font-size:clamp(1.7rem,3vw,2.5rem)}.hero p{margin:0;color:var(--muted)}.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.badge{padding:5px 10px;border-radius:999px;background:#edf2ff;color:#2346bd;font-size:.78rem;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px}.stat{padding:18px}.stat b{font-size:1.65rem}.stat small{display:block;color:var(--muted)}
+.card{padding:22px;margin-bottom:18px}.card h2,.card h3{margin-top:0}.lesson-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.lesson-number{color:var(--primary);font-weight:800;font-size:.85rem}.objective{background:#f0f5ff;border-left:4px solid var(--primary);padding:12px 14px;border-radius:8px;margin:15px 0}.formula{background:#101827;color:#fff;padding:15px;border-radius:12px;font-family:ui-monospace,monospace;overflow:auto}.example{background:#f8fafc;border:1px solid var(--line);padding:15px;border-radius:12px;margin:14px 0}.tip{border-left:4px solid #f59e0b;background:#fffbeb;padding:12px 14px;border-radius:8px}.exercise{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.q{font-weight:700;margin-bottom:10px}.options{display:grid;gap:8px}.options button{padding:11px 13px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;cursor:pointer}.options button:hover{border-color:var(--primary);background:#f5f7ff}.options button.correct{border-color:var(--ok);background:#eaf8f0}.options button.wrong{border-color:var(--bad);background:#fff0f1}.feedback{margin-top:9px;font-weight:700}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--primary);color:#fff;cursor:pointer;font-weight:700}.btn.secondary{background:#e8edf5;color:#25314a}.btn.success{background:var(--ok)}.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left}th{background:#f1f5f9}
+footer{max-width:1250px;margin:auto;padding:28px;text-align:center;color:var(--muted);font-size:.85rem}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:50}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}.grid{grid-template-columns:1fr 1fr}.header-inner{flex-direction:column;align-items:stretch}.progressbox{min-width:0}}
+@media(max-width:600px){main{padding:18px 12px 45px}.grid{grid-template-columns:1fr}.hero,.card{padding:17px}}
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+<div><div class="brand">📐 Matemática 7º Ano</div><div class="sub">Curso completo • Ensino Fundamental • aprendizagem guiada</div></div>
+<div class="progressbox"><div class="progressbar"><span id="progressFill"></span></div><div class="progresslabel" id="progressText">0% concluído</div></div>
+</div></header>
+<div class="layout">
+<aside><input class="search" id="search" placeholder="🔎 Buscar aula..." oninput="filterNav()"><h3>📚 Curso</h3>
+<button class="navbtn active" onclick="showDashboard()">🏠 Visão geral</button><div id="nav"></div><hr><button class="navbtn" onclick="resetProgress()">♻️ Reiniciar progresso</button></aside>
+<main id="app"></main>
+</div>
+<footer>Matemática 7º Ano • Curso digital educacional • <b>English VClass Education</b><br>Estudo, prática, revisão e preparação para o 8º ano. © 2026</footer>
+<div class="toast" id="toast"></div>
+<script>
+const lessons=[
+["Números","01 • Números inteiros e reta numérica","Compreender positivos, negativos, opostos, comparação e ordenação.","EF07MA03",`<p>Os números inteiros incluem negativos, zero e positivos: … −3, −2, −1, 0, 1, 2, 3 …</p><p>Na reta numérica, quanto mais à direita, maior o número. O <b>oposto</b> de +5 é −5 e o módulo (valor absoluto) de −5 é 5.</p><div class="formula">−7 &lt; −3 &lt; 0 &lt; 4 &lt; 9<br>|−8| = 8</div><div class="tip">Entre números negativos, o que está mais perto do zero é o maior.</div>`],
+["Números","02 • Adição e subtração de inteiros","Calcular e interpretar operações com números positivos e negativos.","EF07MA03",`<p>Somar inteiros pode ser entendido como deslocamento na reta numérica.</p><div class="formula">(+7)+(−10)=−3<br>(−4)+(−6)=−10<br>8−(−3)=8+3=11</div><p>Subtrair um número equivale a somar seu oposto.</p>`],
+["Números","03 • Multiplicação e divisão de inteiros","Aplicar regras de sinais e resolver problemas.","EF07MA03",`<p>Na multiplicação e divisão, sinais iguais produzem resultado positivo; sinais diferentes produzem resultado negativo.</p><div class="formula">(−6)×(−4)=+24<br>(−24)÷(+6)=−4</div><div class="tip">Primeiro determine o sinal; depois calcule os valores absolutos.</div>`],
+["Números","04 • Expressões com números inteiros","Resolver expressões respeitando a ordem das operações.","EF07MA04",`<p>Use parênteses, depois potências, multiplicações/divisões e adições/subtrações.</p><div class="formula">−3 + 2×(−5) = −3 −10 = −13</div><p>Não esqueça: −(−a)=+a.</p>`],
+["Números","05 • Frações, equivalência e simplificação","Simplificar frações e reconhecer diferentes representações.","EF07MA01",`<p>Uma fração pode ser simplificada dividindo numerador e denominador pelo mesmo divisor.</p><div class="formula">18/24 = 3/4</div><p>Para comparar frações, procure denominador comum ou use produtos cruzados.</p>`],
+["Números","06 • Operações com frações","Somar, subtrair, multiplicar e dividir frações.","EF07MA01",`<div class="formula">1/3+1/6=1/2<br>2/5×3/4=6/20=3/10<br>2/3÷5/6=2/3×6/5=4/5</div><p>Dividir por uma fração significa multiplicar pelo seu inverso.</p>`],
+["Números","07 • Números racionais","Representar e operar números racionais em diferentes formas.","EF07MA02",`<p>Números racionais podem ser escritos como fração, decimal finito ou decimal periódico.</p><div class="formula">1/2 = 0,5<br>3/4 = 0,75<br>1/3 = 0,333…</div><p>Incluem números negativos, como −2/5 e −1,7.</p>`],
+["Números","08 • Razão, proporção e proporcionalidade","Resolver situações de proporcionalidade direta e compreender escalas.","EF07MA17 • EF07MA18",`<p>Uma proporção expressa equivalência entre razões.</p><div class="formula">2/3 = 8/12</div><p>Se 3 cadernos custam R$24, então 1 custa R$8 e 5 custam R$40.</p><div class="tip">Antes de usar uma técnica, pergunte: as grandezas aumentam ou diminuem na mesma proporção?</div>`],
+["Números","09 • Porcentagem e acréscimos","Calcular porcentagens, aumentos e reduções.","EF07MA02 • EF07MA06",`<p>Porcentagem pode ser convertida para decimal ou fração.</p><div class="formula">20% = 0,20 = 1/5<br>R$150 com 20% de desconto → 150−30 = R$120</div><p>Um aumento de 10% multiplica o valor por 1,10; uma redução de 10%, por 0,90.</p>`],
+["Números","10 • Juros e educação financeira","Interpretar situações simples de juros, descontos e planejamento.","EF07MA02 • EF07MA06",`<p>Em situações simples de juros, o valor dos juros pode ser calculado como taxa × capital × tempo, quando o modelo for de juros simples.</p><div class="formula">J = C×i×t<br>M = C+J</div><div class="example">C=R$500, i=2% ao mês, t=3 meses → J=500×0,02×3=R$30.</div>`],
+["Álgebra","11 • Linguagem algébrica","Representar padrões e relações usando letras.","EF07MA13",`<p>Letras representam números que podem variar ou ser desconhecidos.</p><div class="formula">“o dobro de x mais 3” → 2x+3<br>“um número menos 7” → x−7</div><p>Uma expressão algébrica não precisa ter resultado numérico único enquanto a variável não for definida.</p>`],
+["Álgebra","12 • Valor numérico de expressões","Substituir valores em expressões algébricas.","EF07MA13",`<p>Substitua a variável e respeite a ordem das operações.</p><div class="example">Para x=4: 3x+2 = 3(4)+2 = <b>14</b>.</div><div class="formula">x²−2x+1, com x=5 → 25−10+1=16</div>`],
+["Álgebra","13 • Equações do 1º grau","Resolver equações com uma incógnita.","EF07MA18 • EF07MA19",`<p>Uma equação é uma igualdade que contém uma incógnita. O objetivo é encontrar o valor que torna a igualdade verdadeira.</p><div class="formula">3x+5=20<br>3x=15<br>x=5</div><div class="tip">Sempre confira substituindo o valor encontrado na equação original.</div>`],
+["Álgebra","14 • Problemas com equações","Traduzir problemas cotidianos para equações.","EF07MA18 • EF07MA19",`<p>Defina a incógnita antes de montar a equação.</p><div class="example">“Um número somado a 12 resulta em 31.”<br>x+12=31 → <b>x=19</b>.</div><p>Depois interprete a resposta dentro do contexto do problema.</p>`],
+["Álgebra","15 • Sequências e padrões","Identificar regularidades e expressar uma regra.","EF07MA14",`<p>Procure o que muda de um termo para o seguinte.</p><div class="example">3, 7, 11, 15… aumenta 4 a cada termo.</div><div class="formula">Termo geral: aₙ = 3 + (n−1)×4</div>`],
+["Álgebra","16 • Razão entre grandezas","Relacionar grandezas e interpretar taxas.","EF07MA17",`<p>Razão é uma comparação por divisão. Exemplos: km/h, habitantes/km² e preço por unidade.</p><div class="example">120 km em 2 h → velocidade média = 60 km/h.</div>`],
+["Álgebra","17 • Proporcionalidade direta","Modelar relações em que duas grandezas variam na mesma razão.","EF07MA17",`<p>Se uma grandeza dobra e a outra também dobra, há proporcionalidade direta, desde que a relação permaneça constante.</p><div class="formula">y = kx<br>Se y=15 quando x=3, k=5 → y=5x.</div>`],
+["Álgebra","18 • Proporcionalidade inversa","Reconhecer situações em que uma grandeza aumenta enquanto a outra diminui proporcionalmente.","EF07MA17",`<p>Em um modelo de proporcionalidade inversa, o produto das grandezas permanece constante.</p><div class="formula">x×y=k</div><div class="example">Se 4 pessoas realizam um trabalho em 6 dias, no modelo ideal: 4×6=24 pessoa-dias; 8 pessoas → 3 dias.</div>`],
+["Geometria","19 • Ângulos e relações","Calcular ângulos complementares, suplementares e em retas.","EF07MA23",`<p>Ângulos complementares somam 90°. Suplementares somam 180°. Ângulos opostos pelo vértice têm a mesma medida.</p><div class="formula">x+35°=90° → x=55°<br>x+120°=180° → x=60°</div>`],
+["Geometria","20 • Triângulos: propriedades","Usar soma dos ângulos internos e propriedades dos lados.","EF07MA24",`<p>A soma dos ângulos internos de qualquer triângulo é 180°.</p><div class="formula">50°+60°+x=180° → x=70°</div><p>Em um triângulo isósceles, os ângulos da base são congruentes.</p>`],
+["Geometria","21 • Triângulo e condição de existência","Verificar quando três medidas podem formar um triângulo.","EF07MA25",`<p>Para formar um triângulo, a soma de dois lados deve ser maior que o terceiro.</p><div class="example">3, 4 e 5 formam triângulo. 2, 3 e 6 não formam, pois 2+3 não é maior que 6.</div>`],
+["Geometria","22 • Circunferência e círculo","Reconhecer raio, diâmetro, comprimento e área do círculo.","EF07MA27",`<p>O raio vai do centro à circunferência; o diâmetro mede dois raios.</p><div class="formula">d=2r<br>C=2πr<br>A=πr²</div><p>Use π≈3,14 quando solicitado.</p>`],
+["Geometria","23 • Simetria e transformações","Identificar simetria, translação, rotação e reflexão.","EF07MA19 • EF07MA20",`<p>Reflexão produz uma imagem espelhada; rotação gira uma figura em torno de um ponto; translação desloca sem girar nem deformar.</p><div class="tip">Transformações que preservam forma e tamanho são isometrias.</div>`],
+["Geometria","24 • Polígonos regulares","Calcular ângulos e reconhecer propriedades de polígonos.","EF07MA24 • EF07MA25",`<p>Polígono regular possui lados e ângulos internos congruentes.</p><div class="formula">Soma dos ângulos internos = (n−2)×180°</div><div class="example">Quadrilátero: (4−2)×180°=360°.</div>`],
+["Geometria","25 • Circunferência e comprimento","Resolver problemas envolvendo perímetro circular e medidas.","EF07MA27",`<p>O comprimento da circunferência é proporcional ao raio.</p><div class="example">r=5 cm → C≈2×3,14×5=31,4 cm.</div><p>Observe se o problema pede raio, diâmetro, comprimento ou área.</p>`],
+["Grandezas","26 • Área de figuras planas","Calcular áreas de triângulos, quadriláteros e outras figuras por decomposição.","EF07MA26",`<div class="formula">Retângulo: A=b×h<br>Triângulo: A=(b×h)/2<br>Paralelogramo: A=b×h</div><p>Figuras compostas podem ser divididas em figuras conhecidas.</p>`],
+["Grandezas","27 • Perímetro, área e unidades","Diferenciar medidas de contorno e superfície.","EF07MA26",`<p>Perímetro é medido em unidades lineares (cm, m). Área é medida em unidades quadradas (cm², m²).</p><div class="tip">Não confunda 5 m com 5 m²: representam grandezas diferentes.</div>`],
+["Grandezas","28 • Volume e capacidade","Calcular volume de blocos retangulares e relacionar volume e capacidade.","EF07MA26",`<p>Para um bloco retangular:</p><div class="formula">V = comprimento×largura×altura</div><div class="example">2×3×4=24 cm³.</div><p>Em situações apropriadas, 1 dm³ corresponde a 1 L.</p>`],
+["Probabilidade e Estatística","29 • Média, moda e mediana","Calcular e interpretar medidas de tendência central.","EF07MA35",`<p><b>Média:</b> soma ÷ quantidade. <b>Moda:</b> valor mais frequente. <b>Mediana:</b> valor central após ordenar os dados.</p><div class="example">2, 3, 3, 5, 7 → média 4; moda 3; mediana 3.</div>`],
+["Probabilidade e Estatística","30 • Gráficos e pesquisa","Analisar dados, amostras, tabelas e diferentes representações.","EF07MA36 • EF07MA37",`<p>Uma pesquisa precisa de pergunta clara, população ou amostra adequada, coleta organizada e representação coerente.</p><div class="tip">Um gráfico pode ser tecnicamente correto e ainda induzir interpretação errada se a escala for inadequada.</div>`],
+["Probabilidade e Estatística","31 • Probabilidade experimental","Comparar probabilidades teóricas e resultados de experimentos.","EF07MA34",`<p>Frequência relativa é a razão entre ocorrências de um evento e o total de tentativas.</p><div class="formula">frequência relativa = ocorrências ÷ tentativas</div><p>Com muitas repetições, a frequência relativa tende a se aproximar da probabilidade teórica em experimentos aleatórios estáveis.</p>`],
+["Probabilidade e Estatística","32 • Simulado final do 7º ano","Revisar números, álgebra, geometria, grandezas, estatística e probabilidade.","Revisão geral",`<p>Faça o simulado sem consultar as aulas. Depois, use os erros como mapa de revisão.</p><div class="tip">Meta recomendada: 80% ou mais. Abaixo disso, volte às aulas correspondentes e refaça os exercícios.</div>`]
+];
+
+const questions=[
+["01","Qual é maior?","−8","−3","−10","−12","B"],
+["02","(−7)+(−5) é:","−12","−2","2","12","A"],
+["03","(−6)×(−4) =","−24","−10","10","24","D"],
+["04","8−(−5) =","3","13","−13","−3","B"],
+["05","18/24 simplificada é:","2/3","3/4","4/5","6/8","B"],
+["06","1/2 + 1/4 =","1/4","2/4","3/4","1","C"],
+["07","2/3 ÷ 4/5 =","5/6","8/15","6/5","3/10","A"],
+["08","20% de 150 =","20","25","30","35","C"],
+["09","Um desconto de 10% em R$200 deixa:","R$180","R$190","R$210","R$220","A"],
+["10","3x+5=20. x =","3","4","5","6","C"],
+["11","Para x=4, 2x² =","8","16","32","64","C"],
+["12","A sequência 5, 8, 11, 14 aumenta de:","2","3","4","5","B"],
+["13","Se 4 livros custam R$60, 6 custam, proporcionalmente:","R$75","R$80","R$90","R$100","C"],
+["14","Ângulos complementares somam:","45°","90°","180°","360°","B"],
+["15","Em um triângulo, dois ângulos medem 50° e 60°. O terceiro é:","60°","70°","80°","90°","B"],
+["16","Um triângulo com lados 3,4,5 é:","impossível","possível","equilátero","isósceles","B"],
+["17","Se r=4 cm, o diâmetro é:","2 cm","4 cm","8 cm","16 cm","C"],
+["18","Área de triângulo b=10,h=6:","16","30","60","120","B"],
+["19","Volume de bloco 2×3×5:","10","20","30","60","C"],
+["20","Dados 2,3,3,5,7. A moda é:","2","3","5","7","B"],
+["21","Dados 2,3,3,5,7. A mediana é:","2","3","5","4","B"],
+["22","A soma dos ângulos internos de um quadrilátero é:","180°","270°","360°","540°","C"],
+["23","Área de retângulo 8×5:","13","26","40","80","C"],
+["24","Circunferência com r=5, π=3,14:","15,7","31,4","62,8","78,5","B"],
+["25","Se x×y=24 e x=6, y =","3","4","5","6","B"],
+["26","1,5 em forma de fração simplificada é:","1/2","3/2","2/3","5/2","B"],
+["27","A probabilidade de sair 6 em dado justo é:","1/2","1/4","1/6","5/6","C"],
+["28","8 pessoas fazem em 3 dias. No modelo inverso, 4 pessoas fariam em:","1,5 dia","3 dias","6 dias","12 dias","C"],
+["29","Juros simples: C=500, i=2%, t=3. Juros =","10","20","30","60","C"],
+["30","O oposto de −17 é:","−17","0","17","34","C"]
+];
+
+const bank=[
+["Qual é menor?","−9","−2","0","5","A"],["(−8)+3 =","−11","−5","5","11","B"],["(−5)×3 =","−15","−8","8","15","A"],["12−(−4) =","8","16","−16","−8","B"],
+["3/5 + 1/5 =","3/10","4/5","4/10","1","B"],["3/4×2/3 =","1/2","2/7","5/12","3/2","A"],["25% de 80 =","10","15","20","25","C"],["40% de 250 =","50","75","100","125","C"],
+["x+7=18. x=","9","10","11","12","C"],["2x=18. x=","7","8","9","10","C"],["Para x=3, 4x+1=","10","12","13","15","C"],["2,5,5,7,9. Média=","5","5,6","6","7","B"],
+["Ângulo de 125° é:","agudo","reto","obtuso","raso","C"],["Triângulo soma ângulos=","90°","180°","270°","360°","B"],["Área retângulo 9×4=","13","26","36","40","C"],["Volume 2×4×3=","9","18","24","36","C"],
+["r=6. diâmetro=","3","6","12","18","C"],["Moda de 1,2,2,3,4=","1","2","3","4","B"],["Mediana de 2,4,6,8,10=","4","5","6","7","C"],["P(ímpar em dado)=","1/6","1/3","1/2","2/3","C"],
+["4 trabalhadores em 6 dias; 8 trabalhadores no modelo inverso:","2","3","6","12","B"],["3 livros R$45; 5 livros:","R$60","R$65","R$75","R$90","C"],["−0,75 em fração=","−3/4","−1/2","3/4","−4/3","A"],["x×y=36; x=9; y=","3","4","5","6","B"],
+["Soma dos ângulos de pentágono=","360°","540°","720°","900°","B"],["A área do círculo depende de:","r","2r","r²","diâmetro apenas","C"],["Um polígono regular tem:","só lados iguais","só ângulos iguais","lados e ângulos iguais","nenhuma igualdade","C"],["Frequência relativa de 15 em 60=","15%","20%","25%","30%","C"],["10% de aumento em 300 resulta em:","310","320","330","340","C"],["2−5×3 =","−9","−13","9","13","B"],["(−2)² =","−4","−2","2","4","D"]
+];
+
+let state=JSON.parse(localStorage.getItem("math7progress")||'{"done":[],"score":0,"attempts":0}');
+function save(){localStorage.setItem("math7progress",JSON.stringify(state));updateProgress()}
+function updateProgress(){let p=Math.round(state.done.length/lessons.length*100);document.getElementById("progressFill").style.width=p+"%";document.getElementById("progressText").textContent=`${p}% concluído • ${state.done.length}/${lessons.length} aulas`}
+function buildNav(){let n=document.getElementById("nav");n.innerHTML="";lessons.forEach((l,i)=>{let b=document.createElement("button");b.className="navbtn";b.dataset.title=(l[1]+" "+l[0]).toLowerCase();b.onclick=()=>showLesson(i);b.innerHTML=`${state.done.includes(i)?"✅":"○"} ${l[1]} <span class="tag">${l[0]}</span>`;n.appendChild(b)})}
+function filterNav(){let q=document.getElementById("search").value.toLowerCase();document.querySelectorAll("#nav .navbtn").forEach(b=>b.style.display=b.dataset.title.includes(q)?"block":"none")}
+function showDashboard(){document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));document.getElementById("app").innerHTML=`
+<section class="hero"><h1>Matemática do 7º Ano</h1><p>Uma trilha completa para consolidar números racionais, álgebra, proporcionalidade, geometria, medidas, estatística e probabilidade.</p><div class="badges"><span class="badge">32 aulas</span><span class="badge">BNCC</span><span class="badge">Quiz automático</span><span class="badge">Offline</span></div></section>
+<div class="grid"><div class="card stat"><b>${lessons.length}</b><small>Aulas estruturadas</small></div><div class="card stat"><b>${questions.length}</b><small>Questões no simulado</small></div><div class="card stat"><b>${state.score}</b><small>Acertos registrados</small></div></div>
+<div class="card"><h2>🧭 Como estudar</h2><ol><li>Avance em ordem, começando pela Aula 01.</li><li>Faça os exemplos no papel.</li><li>Resolva a prática rápida antes de concluir.</li><li>Registre seus erros e volte às aulas correspondentes.</li><li>Finalize com o simulado.</li></ol><div class="actions"><button class="btn" onclick="showLesson(0)">▶ Começar Aula 01</button><button class="btn secondary" onclick="showQuiz()">📝 Simulado</button></div></div>
+<div class="card"><h2>🗂️ Mapa do curso</h2>${["Números","Álgebra","Geometria","Grandezas","Probabilidade e Estatística"].map(x=>`<p>• <b>${x}</b> — ${lessons.filter(l=>l[0]===x).length} aulas</p>`).join("")}</div>
+<div class="card"><h2>🎯 Meta</h2><p>Busque <b>80% ou mais</b> no simulado final. Abaixo disso, revise as aulas relacionadas aos erros.</p></div>`}
+function lessonQuestion(i){let q=bank[i%bank.length];return `<div class="q">${q[0]}</div><div class="options">${["A","B","C","D"].map((x,k)=>`<button onclick="answer(this,'${q[5]}','${x}',${i})"><b>${x})</b> ${q[k+1]}</button>`).join("")}</div><div class="feedback" id="fb${i}"></div>`}
+function showLesson(i){let l=lessons[i];document.querySelectorAll("#nav .navbtn").forEach((b,j)=>b.classList.toggle("active",j===i));document.getElementById("app").innerHTML=`<div class="card"><div class="lesson-head"><div><div class="lesson-number">${l[0]} • AULA ${i+1} DE ${lessons.length}</div><h1>${l[1]}</h1></div><span class="badge">${l[3]}</span></div><div class="objective"><b>🎯 Objetivo:</b> ${l[2]}</div>${l[4]}<div class="exercise"><h3>🧠 Prática rápida</h3>${lessonQuestion(i)}</div><div class="actions"><button class="btn success" onclick="completeLesson(${i})">${state.done.includes(i)?"✓ Aula concluída":"✓ Marcar aula como concluída"}</button>${i<lessons.length-1?`<button class="btn secondary" onclick="showLesson(${i+1})">Próxima aula →</button>`:`<button class="btn" onclick="showQuiz()">Abrir simulado →</button>`}</div></div>`}
+function answer(btn,correct,chosen,i){let box=btn.parentElement;[...box.children].forEach(b=>b.disabled=true);let ok=chosen===correct;btn.classList.add(ok?"correct":"wrong");document.getElementById("fb"+i).textContent=ok?"✅ Correto! Excelente.":`❌ Ainda não. A resposta correta é ${correct}.`;state.attempts++;if(ok)state.score++;save();showToast(ok?"Resposta correta!":"Revise o conteúdo.")}
+function completeLesson(i){if(!state.done.includes(i)){state.done.push(i);save();buildNav();showToast("Aula concluída e progresso salvo!")}showLesson(i)}
+function showQuiz(){document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));let qs=questions.map((q,i)=>`<div class="exercise"><div class="q">${i+1}. ${q[1]}</div><div class="options">${["A","B","C","D"].map((x,k)=>`<button onclick="quizAnswer(this,'${q[6]}','${x}',${i})"><b>${x})</b> ${q[k+2]}</button>`).join("")}</div><div class="feedback" id="qfb${i}"></div></div>`).join("");document.getElementById("app").innerHTML=`<section class="hero"><h1>📝 Simulado Final do 7º Ano</h1><p>${questions.length} questões abrangendo todo o curso.</p></section><div class="card">${qs}<div class="actions"><button class="btn" onclick="finishQuiz()">📊 Ver resultado</button></div><div id="quizResult"></div></div>`;window.quizHits=0;window.quizAnswered=0}
+function quizAnswer(btn,correct,chosen,i){let box=btn.parentElement;if(box.dataset.done)return;box.dataset.done=1;[...box.children].forEach(b=>b.disabled=true);window.quizAnswered++;if(chosen===correct){btn.classList.add("correct");window.quizHits++;document.getElementById("qfb"+i).textContent="✅ Correto"}else{btn.classList.add("wrong");document.getElementById("qfb"+i).textContent=`❌ Correta: ${correct}`}}
+function finishQuiz(){let a=window.quizAnswered||0,h=window.quizHits||0,p=a?Math.round(h/a*100):0;document.getElementById("quizResult").innerHTML=`<div class="objective"><h2>Resultado: ${h}/${a} • ${p}%</h2>${a<questions.length?"⚠️ Responda todas as questões para uma avaliação completa.":p>=80?"🎉 Excelente! Seu desempenho indica boa preparação para o 8º ano.":"📚 Revise as aulas correspondentes aos erros e refaça o simulado."}</div>`;state.score+=h;save()}
+function resetProgress(){if(confirm("Apagar todo o progresso do curso?")){state.done=[];state.score=0;state.attempts=0;save();buildNav();showDashboard()}}
+function showToast(t){let e=document.getElementById("toast");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",1800)}
+buildNav();updateProgress();showDashboard();
+</script>
+</body>
+</html>
